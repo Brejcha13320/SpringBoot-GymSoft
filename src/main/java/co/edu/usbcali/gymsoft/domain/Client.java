@@ -1,9 +1,6 @@
 package co.edu.usbcali.gymsoft.domain;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -19,25 +16,26 @@ import java.util.Date;
 @Table(name = "clients")
 public class Client {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "client_id")
     private Integer clientId;
 
-    @Column(name = "first_name")
+    @Column(name = "first_name", length = 100, nullable = false)
     private String firstName;
 
-    @Column(name = "last_name")
+    @Column(name = "last_name", length = 100, nullable = false)
     private String lastName;
 
-    @Column
+    @Column(name = "address", length = 100, nullable = false)
     private String address;
 
-    @Column
+    @Column(name = "email", length = 100, nullable = false)
     private String email;
 
-    @Column
+    @Column(name = "phone", length = 100, nullable = false)
     private String phone;
 
-    @Column
+    @Column(name = "enabled", nullable = false, columnDefinition = "boolean default true")
     private Boolean enabled;
 
     @Column(name = "created_at")
@@ -45,4 +43,6 @@ public class Client {
 
     @Column(name = "updated_at")
     private Date updatedAt;
+
+
 }

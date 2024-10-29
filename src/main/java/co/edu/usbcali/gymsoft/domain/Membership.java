@@ -1,9 +1,6 @@
 package co.edu.usbcali.gymsoft.domain;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -19,19 +16,20 @@ import java.util.Date;
 @Table(name = "memberships")
 public class Membership {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "membership_id")
     private Integer membershipId;
 
-    @Column
+    @Column(name = "type", length = 50, nullable = false)
     private String type;
 
-    @Column
+    @Column(name = "description", length = 255, nullable = false)
     private String description;
 
-    @Column
+    @Column(name = "cost", columnDefinition = "float default 0", nullable = false)
     private Float cost;
 
-    @Column
+    @Column(name = "enabled", nullable = false, columnDefinition = "boolean default true")
     private Boolean enabled;
 
     @Column(name = "created_at")

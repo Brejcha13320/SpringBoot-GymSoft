@@ -16,31 +16,32 @@ import java.util.Date;
 @Table(name = "employees")
 public class Employee {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "employee_id")
     private Integer employeeId;
 
-    @Column(name = "userId_id")
+    @Column(name = "user_id")
     private Integer userId;
 
-    @Column(name = "first_name")
+    @Column(name = "first_name", length = 100, nullable = false)
     private String firstName;
 
-    @Column(name = "last_name")
+    @Column(name = "last_name", length = 100, nullable = false)
     private String lastName;
 
-    @Column(name = "employee_type")
+    @Column(name = "employee_type", length = 50, nullable = false)
     private String employeeType;
 
-    @Column
+    @Column(name = "address", length = 100, nullable = false)
     private String address;
 
-    @Column
+    @Column(name = "email", length = 100, nullable = false)
     private String email;
 
-    @Column
+    @Column(name = "phone", length = 100, nullable = false)
     private String phone;
 
-    @Column
+    @Column(name = "enabled", nullable = false, columnDefinition = "boolean default true")
     private Boolean enabled;
 
     @Column(name = "created_at")

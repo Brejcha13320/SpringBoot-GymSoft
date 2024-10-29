@@ -26,7 +26,7 @@ CREATE TABLE "clients" (
   "client_id" SERIAL PRIMARY KEY,
   "first_name" varchar NOT NULL,
   "last_name" varchar NOT NULL,
-  "adress" varchar NOT NULL,
+  "address" varchar NOT NULL,
   "email" varchar NOT NULL,
   "phone" varchar NOT NULL,
   "enabled" bool DEFAULT TRUE,
