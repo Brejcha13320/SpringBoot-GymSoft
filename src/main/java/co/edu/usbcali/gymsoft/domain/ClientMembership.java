@@ -21,12 +21,6 @@ public class ClientMembership {
     @Column(name = "client_membership_id")
     private Integer clientMembershipId;
 
-    @Column(name = "client_id")
-    private Date clientId;
-
-    @Column(name = "membership_id", nullable = false)
-    private Date membershipId;
-
     @Column(name = "start_date", nullable = false)
     private Date startDate;
 

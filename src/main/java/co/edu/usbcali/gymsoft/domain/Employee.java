@@ -20,9 +20,6 @@ public class Employee {
     @Column(name = "employee_id")
     private Integer employeeId;
 
-    @Column(name = "user_id")
-    private Integer userId;
-
     @Column(name = "first_name", length = 100, nullable = false)
     private String firstName;
 
