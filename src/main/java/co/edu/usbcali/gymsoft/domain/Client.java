@@ -1,6 +1,6 @@
 package co.edu.usbcali.gymsoft.domain;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -8,9 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Data
 @Builder
@@ -48,16 +46,7 @@ public class Client {
     @Column(name = "updated_at")
     private Date updatedAt;
 
-    @OneToMany
-    @JoinColumn(name = "client_id", referencedColumnName = "client_id")
-    @JsonManagedReference
+    @OneToMany(mappedBy = "client")
+    @JsonIgnoreProperties("client")
     private List<ClientMembership> clientMemberships;
-
-    /*@ManyToMany
-    @JoinTable(
-            name = "clients_memberships",
-            joinColumns = @JoinColumn(name = "client_id"),
-            inverseJoinColumns = @JoinColumn(name = "membership_id")
-    )
-    private Set<Membership> memberships = new HashSet<>();*/
 }

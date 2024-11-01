@@ -1,7 +1,5 @@
 package co.edu.usbcali.gymsoft.domain;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,9 +7,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 
 @Data
 @Builder
@@ -42,17 +37,4 @@ public class Membership {
 
     @Column(name = "updated_at")
     private Date updatedAt;
-
-    @OneToMany
-    @JoinColumn(name = "membership_id", referencedColumnName = "membership_id")
-    @JsonBackReference
-    private List<ClientMembership> clientMemberships;
-
-    /*@ManyToMany
-    @JoinTable(
-            name = "clients_memberships",
-            joinColumns = @JoinColumn(name = "membership_id"),
-            inverseJoinColumns = @JoinColumn(name = "client_id")
-    )
-    private Set<Membership> courses = new HashSet<>();*/
 }

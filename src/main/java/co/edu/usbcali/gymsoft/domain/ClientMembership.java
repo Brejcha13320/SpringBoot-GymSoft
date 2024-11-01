@@ -1,7 +1,6 @@
 package co.edu.usbcali.gymsoft.domain;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -52,11 +51,11 @@ public class ClientMembership {
 
     @ManyToOne
     @JoinColumn(name = "client_id", referencedColumnName = "client_id")
-    @JsonBackReference
+    @JsonIgnoreProperties("clientMemberships")
     private Client client;
 
     @ManyToOne
     @JoinColumn(name = "membership_id", referencedColumnName = "membership_id")
-    @JsonManagedReference
+    @JsonIgnoreProperties("clientMemberships")
     private Membership membership;
 }
