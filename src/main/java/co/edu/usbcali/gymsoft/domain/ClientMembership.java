@@ -9,6 +9,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
+import java.util.List;
 
 @Data
 @Builder
@@ -52,11 +53,15 @@ public class ClientMembership {
 
     @ManyToOne
     @JoinColumn(name = "client_id", referencedColumnName = "client_id")
-    @JsonBackReference
+    @JsonManagedReference
     private Client client;
 
     @ManyToOne
     @JoinColumn(name = "membership_id", referencedColumnName = "membership_id")
     @JsonManagedReference
     private Membership membership;
+
+    @OneToMany(mappedBy = "clientMembership")
+    @JsonBackReference
+    private List<EntryRecord> entryRecords;
 }
