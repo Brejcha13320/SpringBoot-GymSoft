@@ -49,7 +49,7 @@ CREATE TABLE "clients_memberships" (
   "client_id" integer,
   "membership_id" integer NOT NULL,
   "start_date" timestamp NOT NULL,
-  "end_date" timestamp NOT NULL,
+  "end_date" timestamp,
   "remaining_days" integer DEFAULT 0,
   "quantity" integer DEFAULT 0,
   "cost" float DEFAULT 0,

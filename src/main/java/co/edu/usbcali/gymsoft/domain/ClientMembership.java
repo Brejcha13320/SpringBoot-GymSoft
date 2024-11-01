@@ -1,5 +1,6 @@
 package co.edu.usbcali.gymsoft.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -48,11 +49,13 @@ public class ClientMembership {
     @Column(name = "updated_at")
     private Date updatedAt;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "client_id", referencedColumnName = "client_id")
+    @JsonBackReference
     private Client client;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "membership_id", referencedColumnName = "membership_id")
+    @JsonBackReference
     private Membership membership;
 }
