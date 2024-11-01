@@ -1,5 +1,8 @@
 package co.edu.usbcali.gymsoft.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -32,25 +35,10 @@ public class User {
     @Column(name = "enabled", nullable = false, columnDefinition = "boolean default true")
     private Boolean enabled;
 
-    //@Column(name = "created_at", updatable = false)
     @Column(name = "created_at")
-
     private Date createdAt;
 
     @Column(name = "updated_at")
     private Date updatedAt;
-
-    /*@PrePersist
-    protected void onCreate() {
-        Date now = new Date();
-        this.createdAt = now;
-        this.updatedAt = now;
-    }
-
-    @PreUpdate
-    protected void onUpdate() {
-        this.updatedAt = new Date();
-    }
-    */
-
+    
 }

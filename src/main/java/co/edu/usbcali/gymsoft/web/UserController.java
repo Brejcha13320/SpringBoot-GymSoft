@@ -4,10 +4,7 @@ import co.edu.usbcali.gymsoft.domain.User;
 import co.edu.usbcali.gymsoft.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -30,6 +27,11 @@ public class UserController {
     @GetMapping("/{userId}")
     public ResponseEntity<User> getById(@PathVariable int userId){
         return ResponseEntity.ok(this.userService.getById(userId));
+    }
+
+    @PostMapping
+    public ResponseEntity<User> save(@RequestBody User user){
+        return ResponseEntity.ok(this.userService.save(user));
     }
 
 }
