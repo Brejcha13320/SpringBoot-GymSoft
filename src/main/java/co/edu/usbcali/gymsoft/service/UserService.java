@@ -18,7 +18,7 @@ public class UserService {
     }
 
     public User getById(int userId){
-        return this.userRepository.getReferenceById(userId);
+        return this.userRepository.findById(userId).get();
     }
 
     public List<User> getAll() {
