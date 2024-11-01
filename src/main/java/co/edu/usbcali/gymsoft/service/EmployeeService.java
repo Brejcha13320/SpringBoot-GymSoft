@@ -3,7 +3,9 @@ package co.edu.usbcali.gymsoft.service;
 import co.edu.usbcali.gymsoft.domain.Employee;
 import co.edu.usbcali.gymsoft.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -18,7 +20,9 @@ public class EmployeeService {
     }
 
     public Employee getById(int employeeId){
-        return this.employeeRepository.getReferenceById(employeeId);
+
+        return this.employeeRepository.findById(employeeId).orElseThrow(() ->
+            new ResponseStatusException(HttpStatus.NOT_FOUND, "Employee not found"));
     }
 
     public List<Employee> getAll(){

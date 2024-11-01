@@ -21,7 +21,7 @@ public class UserService {
 
     public User getById(int userId){
         return this.userRepository.findById(userId).orElseThrow(() ->
-                new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found"));
+            new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found"));
     }
 
     public List<User> getAll() {
