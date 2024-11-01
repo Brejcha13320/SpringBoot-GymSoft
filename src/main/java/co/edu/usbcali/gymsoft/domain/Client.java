@@ -8,7 +8,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Data
 @Builder
@@ -50,4 +52,12 @@ public class Client {
     @JoinColumn(name = "client_id", referencedColumnName = "client_id")
     @JsonManagedReference
     private List<ClientMembership> clientMemberships;
+
+    /*@ManyToMany
+    @JoinTable(
+            name = "clients_memberships",
+            joinColumns = @JoinColumn(name = "client_id"),
+            inverseJoinColumns = @JoinColumn(name = "membership_id")
+    )
+    private Set<Membership> memberships = new HashSet<>();*/
 }
