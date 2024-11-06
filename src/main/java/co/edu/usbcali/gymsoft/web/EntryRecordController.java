@@ -1,9 +1,7 @@
 package co.edu.usbcali.gymsoft.web;
 
-import co.edu.usbcali.gymsoft.domain.Client;
 import co.edu.usbcali.gymsoft.domain.EntryRecord;
-import co.edu.usbcali.gymsoft.service.ClientService;
-import co.edu.usbcali.gymsoft.service.EntryRecordService;
+import co.edu.usbcali.gymsoft.services.old.EntryRecordServiceOld;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,10 +12,10 @@ import java.util.List;
 @RequestMapping("/api/entryRecord")
 public class EntryRecordController {
 
-    private final EntryRecordService entryRecordService;
+    private final EntryRecordServiceOld entryRecordService;
 
     @Autowired
-    public EntryRecordController(EntryRecordService entryRecordService) {
+    public EntryRecordController(EntryRecordServiceOld entryRecordService) {
         this.entryRecordService = entryRecordService;
     }
 

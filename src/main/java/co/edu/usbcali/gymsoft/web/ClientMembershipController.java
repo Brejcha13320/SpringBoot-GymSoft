@@ -1,7 +1,7 @@
 package co.edu.usbcali.gymsoft.web;
 
 import co.edu.usbcali.gymsoft.domain.ClientMembership;
-import co.edu.usbcali.gymsoft.service.ClientMembershipService;
+import co.edu.usbcali.gymsoft.services.old.ClientMembershipServiceOld;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,10 +12,10 @@ import java.util.List;
 @RequestMapping("/api/clientMembership")
 public class ClientMembershipController {
 
-    private final ClientMembershipService clientMembershipService;
+    private final ClientMembershipServiceOld clientMembershipService;
 
     @Autowired
-    public ClientMembershipController(ClientMembershipService clientMembershipService) {
+    public ClientMembershipController(ClientMembershipServiceOld clientMembershipService) {
         this.clientMembershipService = clientMembershipService;
     }
 

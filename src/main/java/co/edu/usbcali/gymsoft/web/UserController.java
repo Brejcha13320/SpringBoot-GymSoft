@@ -1,6 +1,8 @@
 package co.edu.usbcali.gymsoft.web;
 
 import co.edu.usbcali.gymsoft.domain.User;
+import co.edu.usbcali.gymsoft.dto.UserDTO;
+import co.edu.usbcali.gymsoft.dto.request.CreateUserRequest;
 import co.edu.usbcali.gymsoft.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -19,19 +21,20 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping
-    public ResponseEntity<List<User>> getAll(){
-        return ResponseEntity.ok(this.userService.getAll());
-    }
-
-    @GetMapping("/{userId}")
-    public ResponseEntity<User> getById(@PathVariable int userId){
-        return ResponseEntity.ok(this.userService.getById(userId));
-    }
+//    @GetMapping
+//    public ResponseEntity<List<User>> getAll(){
+//        return ResponseEntity.ok(this.userService.getAll());
+//    }
+//
+//    @GetMapping("/{userId}")
+//    public ResponseEntity<User> getById(@PathVariable int userId){
+//        return ResponseEntity.ok(this.userService.getById(userId));
+//    }
 
     @PostMapping
-    public ResponseEntity<User> save(@RequestBody User user){
-        return ResponseEntity.ok(this.userService.save(user));
+    public ResponseEntity<UserDTO> createUser(@RequestBody CreateUserRequest createUserRequest) throws Exception {
+        UserDTO userDTO = userService.createUser(createUserRequest);
+        return ResponseEntity.ok(userDTO);
     }
 
 }

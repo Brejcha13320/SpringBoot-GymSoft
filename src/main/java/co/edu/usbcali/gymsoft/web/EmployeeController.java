@@ -1,7 +1,7 @@
 package co.edu.usbcali.gymsoft.web;
 
 import co.edu.usbcali.gymsoft.domain.Employee;
-import co.edu.usbcali.gymsoft.service.EmployeeService;
+import co.edu.usbcali.gymsoft.services.old.EmployeeServiceOld;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,10 +12,10 @@ import java.util.List;
 @RequestMapping("/api/employee")
 public class EmployeeController {
 
-    private final EmployeeService employeeService;
+    private final EmployeeServiceOld employeeService;
 
     @Autowired
-    public EmployeeController(EmployeeService employeeService) {
+    public EmployeeController(EmployeeServiceOld employeeService) {
         this.employeeService = employeeService;
     }
 
