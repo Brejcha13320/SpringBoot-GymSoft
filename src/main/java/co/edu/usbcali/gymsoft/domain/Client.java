@@ -1,6 +1,7 @@
 package co.edu.usbcali.gymsoft.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -47,6 +48,7 @@ public class Client {
     private Date updatedAt;
 
     @OneToMany(mappedBy = "client")
-    @JsonIgnoreProperties("client")
+    //@JsonIgnoreProperties("client")
+    @JsonManagedReference
     private List<ClientMembership> clientMemberships;
 }

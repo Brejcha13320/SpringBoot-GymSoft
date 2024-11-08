@@ -2,6 +2,7 @@ package co.edu.usbcali.gymsoft.domain;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -40,5 +41,9 @@ public class User {
 
     @Column(name = "updated_at")
     private Date updatedAt;
-    
+
+    @OneToOne(mappedBy = "user")
+    @JoinColumn(name = "user_id", referencedColumnName = "user_id")
+    @JsonIgnoreProperties("user")
+    private Employee employee;
 }

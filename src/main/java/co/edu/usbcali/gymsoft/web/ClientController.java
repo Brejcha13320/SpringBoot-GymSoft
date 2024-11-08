@@ -1,7 +1,9 @@
 package co.edu.usbcali.gymsoft.web;
 
 import co.edu.usbcali.gymsoft.domain.Client;
-import co.edu.usbcali.gymsoft.service.ClientService;
+import co.edu.usbcali.gymsoft.dto.ClientDto;
+import co.edu.usbcali.gymsoft.dto.request.CreateClientRequest;
+import co.edu.usbcali.gymsoft.service.impl.ClientServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,15 +14,14 @@ import java.util.List;
 @RequestMapping("/api/client")
 public class ClientController {
 
-    private final ClientService clientService;
+    private final ClientServiceImpl clientService;
 
-    @Autowired
-    public ClientController(ClientService clientService) {
+    public ClientController(ClientServiceImpl clientService) {
         this.clientService = clientService;
     }
 
     @GetMapping
-    public ResponseEntity<List<Client>> getAll(){
+    public ResponseEntity<List<ClientDto>> getAll(){
         return ResponseEntity.ok(this.clientService.getAll());
     }
 
@@ -30,8 +31,8 @@ public class ClientController {
     }
 
     @PostMapping
-    public ResponseEntity<Client> save(@RequestBody Client client){
-        return ResponseEntity.ok(this.clientService.save(client));
+    public ResponseEntity<ClientDto> save(@RequestBody CreateClientRequest createClientRequest){
+        return ResponseEntity.ok(this.clientService.save(createClientRequest));
     }
 
 }

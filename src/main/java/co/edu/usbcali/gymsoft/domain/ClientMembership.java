@@ -51,11 +51,13 @@ public class ClientMembership {
 
     @ManyToOne
     @JoinColumn(name = "client_id", referencedColumnName = "client_id")
-    @JsonIgnoreProperties("clientMemberships")
+    //@JsonIgnoreProperties("clientMemberships")
+    @JsonBackReference
     private Client client;
 
     @ManyToOne
     @JoinColumn(name = "membership_id", referencedColumnName = "membership_id")
-    @JsonIgnoreProperties("clientMemberships")
+    //@JsonIgnoreProperties("clientMemberships")
+    @JsonManagedReference
     private Membership membership;
 }

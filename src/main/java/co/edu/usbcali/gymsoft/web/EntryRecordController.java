@@ -1,8 +1,6 @@
 package co.edu.usbcali.gymsoft.web;
 
-import co.edu.usbcali.gymsoft.domain.Client;
 import co.edu.usbcali.gymsoft.domain.EntryRecord;
-import co.edu.usbcali.gymsoft.service.ClientService;
 import co.edu.usbcali.gymsoft.service.EntryRecordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
