@@ -9,6 +9,8 @@ import co.edu.usbcali.gymsoft.service.ClientService;
 import co.edu.usbcali.gymsoft.utils.validation.ClientMessage;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ClientServiceImpl implements ClientService {
 
@@ -16,6 +18,22 @@ public class ClientServiceImpl implements ClientService {
 
     public ClientServiceImpl(ClientRepository clientRepository) {
         this.clientRepository = clientRepository;
+    }
+
+
+    @Override
+    public List<ClientDTO> getAllClients() throws Exception {
+        List<Client> clients = clientRepository.findAll();
+        return ClientMapper.domainToDtoList(clients);
+    }
+
+    @Override
+    public ClientDTO getClientById(Integer clientId) throws Exception {
+        Client client = clientRepository.findById(clientId).orElseThrow(
+                () -> new Exception(String.format(ClientMessage.NOT_EXISTS_BY_CLIENT_ID, clientId))
+        );
+
+        return ClientMapper.domainToDto(client);
     }
 
     @Override

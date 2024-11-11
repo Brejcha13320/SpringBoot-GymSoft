@@ -20,6 +20,18 @@ public class ClientController {
         this.clientService = clientService;
     }
 
+    @GetMapping(value = "/all")
+    public ResponseEntity<List<ClientDTO>> getAllClients() throws Exception {
+        List<ClientDTO> clientsDTO = clientService.getAllClients();
+        return ResponseEntity.ok(clientsDTO);
+    }
+
+    @GetMapping(value = "/one/{clientId}")
+    public ResponseEntity<ClientDTO> getClientById(@PathVariable Integer clientId) throws Exception {
+        ClientDTO clientDTO = clientService.getClientById(clientId);
+        return ResponseEntity.ok(clientDTO);
+    }
+
     @PostMapping
     public ResponseEntity<ClientDTO> createClient(@RequestBody @Valid CreateClientRequest createClientRequest) throws Exception {
         ClientDTO clientDTO = clientService.createClient(createClientRequest);
