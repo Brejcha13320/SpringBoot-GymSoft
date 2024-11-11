@@ -26,5 +26,6 @@ public class ClientMessage {
     public static final String REGEX_PHONE="El phone solo puede tener digitos";
 
     public static final String EXISTS_BY_EMAIL = "Ya existe un client con el email: %s";
+    public static final String NOT_EXISTS_BY_CLIENT_ID = "No existe un client con el clientId: %s";
 
 }

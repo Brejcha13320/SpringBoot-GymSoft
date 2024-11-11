@@ -28,6 +28,15 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public UserDTO findUserById(Integer userId) throws Exception {
+        User user = userRepository.findById(userId).orElseThrow(
+                () -> new Exception(String.format(UserMessage.NOT_EXISTS_BY_USER_ID, userId))
+        );
+
+        return UserMapper.domainToDto(user);
+    }
+
+    @Override
     public UserDTO createUser(CreateUserRequest createUserRequest) throws Exception {
 
         //Validar si ya existe un usuario con ese username

@@ -1,12 +1,9 @@
 package co.edu.usbcali.gymsoft.web;
 
-import co.edu.usbcali.gymsoft.domain.User;
 import co.edu.usbcali.gymsoft.dto.UserDTO;
 import co.edu.usbcali.gymsoft.dto.request.CreateUserRequest;
-import co.edu.usbcali.gymsoft.mapper.UserMapper;
 import co.edu.usbcali.gymsoft.service.UserService;
 import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,6 +23,12 @@ public class UserController {
     public ResponseEntity<List<UserDTO>> getAllUsers() throws Exception {
         List<UserDTO> usersDTO = userService.findAllUsers();
         return ResponseEntity.ok(usersDTO);
+    }
+
+    @GetMapping(value = "/one/{userId}")
+    public ResponseEntity<UserDTO> getUserById(@PathVariable Integer userId) throws Exception {
+        UserDTO userDTO = userService.findUserById(userId);
+        return ResponseEntity.ok(userDTO);
     }
 
     @PostMapping

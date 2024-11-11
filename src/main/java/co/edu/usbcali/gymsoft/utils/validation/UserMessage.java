@@ -14,4 +14,6 @@ public class UserMessage {
     public static final String NOT_EMPTY_ROLE="El role no puede estar vacio";
 
     public static final String EXISTS_BY_USERNAME = "Ya existe un usuario con el username: %s";
+    public static final String NOT_EXISTS_BY_USER_ID = "No existe un usuario con el userId: %s";
+
 }
