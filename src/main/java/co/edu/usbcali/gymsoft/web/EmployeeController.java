@@ -2,6 +2,10 @@ package co.edu.usbcali.gymsoft.web;
 
 import co.edu.usbcali.gymsoft.domain.Employee;
 //import co.edu.usbcali.gymsoft.services.old.EmployeeServiceOld;
+import co.edu.usbcali.gymsoft.dto.EmployeeDTO;
+import co.edu.usbcali.gymsoft.dto.request.CreateEmployeeRequest;
+import co.edu.usbcali.gymsoft.service.EmployeeService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,27 +16,22 @@ import java.util.List;
 @RequestMapping("/api/employee")
 public class EmployeeController {
 
-//    private final EmployeeServiceOld employeeService;
-//
-//    @Autowired
-//    public EmployeeController(EmployeeServiceOld employeeService) {
-//        this.employeeService = employeeService;
-//    }
-//
-//    @GetMapping
-//    public ResponseEntity<List<Employee>> getAll(){
-//        return ResponseEntity.ok(employeeService.getAll());
-//    }
-//
-//    @GetMapping("/{employeeId}")
-//    public ResponseEntity<Employee> getById(@PathVariable int employeeId){
-//        return ResponseEntity.ok(employeeService.getById(employeeId));
-//    }
-//
-//    @PostMapping
-//    public ResponseEntity<Employee> save(@RequestBody Employee employee){
-//        return ResponseEntity.ok(employeeService.save(employee));
-//    }
+    private final EmployeeService employeeService;
 
+    public EmployeeController(EmployeeService employeeService) {
+        this.employeeService = employeeService;
+    }
+
+    @GetMapping(value = "/all")
+    public ResponseEntity<List<EmployeeDTO>> getAllEmployees() throws Exception{
+        List<EmployeeDTO> employeeDTO = employeeService.findAllEmployees();
+        return ResponseEntity.ok(employeeDTO);
+    }
+
+    @PostMapping
+    public ResponseEntity<EmployeeDTO> createEmployee(@RequestBody @Valid CreateEmployeeRequest createEmployeeRequest) throws Exception{
+        EmployeeDTO employeeDTO = employeeService.createEmployee(createEmployeeRequest);
+        return ResponseEntity.ok(employeeDTO);
+    }
 
 }
