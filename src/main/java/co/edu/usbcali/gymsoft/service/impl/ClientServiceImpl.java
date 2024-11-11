@@ -21,7 +21,6 @@ public class ClientServiceImpl implements ClientService {
         this.clientRepository = clientRepository;
     }
 
-
     @Override
     public List<ClientDTO> getAllClients() throws Exception {
         List<Client> clients = clientRepository.findAll();

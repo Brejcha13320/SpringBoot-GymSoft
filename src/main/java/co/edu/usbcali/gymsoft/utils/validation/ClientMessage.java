@@ -28,4 +28,7 @@ public class ClientMessage {
     public static final String EXISTS_BY_EMAIL = "Ya existe un client con el email: %s";
     public static final String NOT_EXISTS_BY_CLIENT_ID = "No existe un client con el clientId: %s";
 
+    public static final String NOT_EXISTS_BY_MEMBERSHIP_ID = "No existe una membresía con el membershipId: %s";
+    public static final String NOT_EXISTS_BY_CLIENT_MEMBERSHIP_ID = "No existe una membresía de cliente con el clientMembershipId: %s";
+
 }
