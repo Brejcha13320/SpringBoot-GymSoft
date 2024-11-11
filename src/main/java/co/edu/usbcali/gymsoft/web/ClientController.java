@@ -2,6 +2,7 @@ package co.edu.usbcali.gymsoft.web;
 
 import co.edu.usbcali.gymsoft.dto.ClientDTO;
 import co.edu.usbcali.gymsoft.dto.request.CreateClientRequest;
+import co.edu.usbcali.gymsoft.dto.request.UpdateClientRequest;
 import co.edu.usbcali.gymsoft.service.ClientService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +37,14 @@ public class ClientController {
     public ResponseEntity<ClientDTO> createClient(@RequestBody @Valid CreateClientRequest createClientRequest) throws Exception {
         ClientDTO clientDTO = clientService.createClient(createClientRequest);
         return ResponseEntity.ok().body(clientDTO);
+    }
+
+    @PutMapping(value = "/update/{clientId}")
+    public ResponseEntity<ClientDTO> updateClient(
+            @PathVariable Integer clientId,
+            @RequestBody @Valid UpdateClientRequest updateClientRequest) throws Exception {
+        ClientDTO clientDTO = clientService.updateClient(clientId, updateClientRequest);
+        return ResponseEntity.ok(clientDTO);
     }
 
 }

@@ -2,6 +2,7 @@ package co.edu.usbcali.gymsoft.web;
 
 import co.edu.usbcali.gymsoft.dto.UserDTO;
 import co.edu.usbcali.gymsoft.dto.request.CreateUserRequest;
+import co.edu.usbcali.gymsoft.dto.request.UpdateUserRequest;
 import co.edu.usbcali.gymsoft.service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
@@ -34,6 +35,14 @@ public class UserController {
     @PostMapping
     public ResponseEntity<UserDTO> createUser(@RequestBody @Valid CreateUserRequest createUserRequest) throws Exception {
         UserDTO userDTO = userService.createUser(createUserRequest);
+        return ResponseEntity.ok(userDTO);
+    }
+
+    @PutMapping(value = "/update/{userId}")
+    public ResponseEntity<UserDTO> updateUser(
+            @PathVariable Integer userId,
+            @RequestBody @Valid UpdateUserRequest updateUserRequest) throws Exception {
+        UserDTO userDTO = userService.updateUser(userId, updateUserRequest);
         return ResponseEntity.ok(userDTO);
     }
 

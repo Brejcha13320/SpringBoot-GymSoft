@@ -3,6 +3,7 @@ package co.edu.usbcali.gymsoft.mapper;
 import co.edu.usbcali.gymsoft.domain.Client;
 import co.edu.usbcali.gymsoft.dto.ClientDTO;
 import co.edu.usbcali.gymsoft.dto.request.CreateClientRequest;
+import co.edu.usbcali.gymsoft.dto.request.UpdateClientRequest;
 import co.edu.usbcali.gymsoft.utils.Constants;
 
 import java.util.List;
@@ -54,6 +55,15 @@ public class ClientMapper {
                 .phone(createClientRequest.getPhone())
                 .enabled(Constants.ENABLE_ACTIVE)
                 .build();
+    }
+
+    public static Client updateClientRequestToDomain(Client client, UpdateClientRequest updateClientRequest){
+        client.setFirstName(updateClientRequest.getFirstName());
+        client.setLastName(updateClientRequest.getLastName());
+        client.setAddress(updateClientRequest.getAddress());
+        client.setEmail(updateClientRequest.getEmail());
+        client.setPhone(updateClientRequest.getPhone());
+        return client;
     }
 
 }

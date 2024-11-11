@@ -3,6 +3,7 @@ package co.edu.usbcali.gymsoft.mapper;
 import co.edu.usbcali.gymsoft.domain.User;
 import co.edu.usbcali.gymsoft.dto.UserDTO;
 import co.edu.usbcali.gymsoft.dto.request.CreateUserRequest;
+import co.edu.usbcali.gymsoft.dto.request.UpdateUserRequest;
 import co.edu.usbcali.gymsoft.utils.Constants;
 
 import java.util.List;
@@ -48,6 +49,13 @@ public class UserMapper {
                 .role(createUserRequest.getRole())
                 .enabled(Constants.ENABLE_ACTIVE)
                 .build();
+    }
+
+    public static User updateUserRequestToDomain(User user, UpdateUserRequest updateUserRequest){
+        user.setUsername(updateUserRequest.getUsername());
+        user.setPassword(updateUserRequest.getPassword());
+        user.setRole(updateUserRequest.getRole());
+        return user;
     }
 
 }
