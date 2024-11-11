@@ -7,6 +7,4 @@ public interface UserService {
 
     public UserDTO createUser(CreateUserRequest createUserRequest) throws Exception;
 
-
-
 }
