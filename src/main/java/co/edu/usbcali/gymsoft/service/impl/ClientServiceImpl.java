@@ -3,6 +3,7 @@ package co.edu.usbcali.gymsoft.service.impl;
 import co.edu.usbcali.gymsoft.domain.Client;
 import co.edu.usbcali.gymsoft.dto.ClientDTO;
 import co.edu.usbcali.gymsoft.dto.request.CreateClientRequest;
+import co.edu.usbcali.gymsoft.dto.request.UpdateClientRequest;
 import co.edu.usbcali.gymsoft.mapper.ClientMapper;
 import co.edu.usbcali.gymsoft.repository.ClientRepository;
 import co.edu.usbcali.gymsoft.service.ClientService;
@@ -49,4 +50,15 @@ public class ClientServiceImpl implements ClientService {
         ClientDTO clientDTO = ClientMapper.domainToDto(client);
         return clientDTO;
     }
+
+    @Override
+    public ClientDTO updateClient(Integer clientId, UpdateClientRequest updateClientRequest) throws Exception {
+        ClientDTO clientDTO = getClientById(clientId);
+        Client client = ClientMapper.dtoToDomain(clientDTO);
+        client = ClientMapper.updateClientRequestToDomain(client, updateClientRequest);
+        client = clientRepository.save(client);
+        return ClientMapper.domainToDto(client);
+    }
+
+
 }
