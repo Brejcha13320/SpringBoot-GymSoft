@@ -10,5 +10,6 @@ import java.util.List;
 public interface EmployeeRepository  extends JpaRepository<Employee, Integer> {
 
     //List<Employee> findAllByUserId(Integer userId);
+    boolean existsByEmail(String email);
 
 }

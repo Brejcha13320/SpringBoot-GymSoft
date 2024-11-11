@@ -20,9 +20,11 @@ import java.util.List;
 public class EmployeeServiceImpl implements  EmployeeService {
 
     private final EmployeeRepository employeeRepository;
+    private final UserRepository userRepository;
 
-    public EmployeeServiceImpl(EmployeeRepository employeeRepository) {
+    public EmployeeServiceImpl(EmployeeRepository employeeRepository, UserRepository userRepository) {
         this.employeeRepository = employeeRepository;
+        this.userRepository = userRepository;
     }
 
     @Override
@@ -42,7 +44,24 @@ public class EmployeeServiceImpl implements  EmployeeService {
 
     @Override
     public EmployeeDTO createEmployee(CreateEmployeeRequest createEmployeeRequest) throws Exception {
+
+        //Valida que exista el usuario
+        Integer userId = createEmployeeRequest.getUserId();
+
         Employee employee = EmployeeMapper.createEmployeeRequestToDomain(createEmployeeRequest);
+
+        if (!(userId == null || userId == 0)) {
+            User user = userRepository.findById(userId)
+                    .orElseThrow(
+                            () -> new Exception(String.format(EmployeeMessage.EXISTS_EMPLOYEE, userId))
+                    );
+            employee.setUser(user);
+        }
+
+        if (employeeRepository.existsByEmail(employee.getEmail())) {
+            throw new Exception(String.format(EmployeeMessage.EXISTS_BY_EMAIL, employee.getEmail()));
+        }
+
         employee = employeeRepository.save(employee);
         EmployeeDTO employeeDTO = EmployeeMapper.domainToDto(employee);
         return employeeDTO;
