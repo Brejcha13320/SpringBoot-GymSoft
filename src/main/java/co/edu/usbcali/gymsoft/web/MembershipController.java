@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/membership")
 public class MembershipController {
@@ -19,25 +21,22 @@ public class MembershipController {
         this.membershipService = membershipService;
     }
 
+    @GetMapping(value = "/all")
+    public ResponseEntity<List<MembershipDTO>> getAllMemberships() throws Exception {
+        List<MembershipDTO> listMembershipDTO = membershipService.getAllMemberships();
+        return ResponseEntity.ok(listMembershipDTO);
+    }
+
+    @GetMapping(value = "/one/{membershipId}")
+    public ResponseEntity<MembershipDTO> getMembershipById(@PathVariable Integer membershipId) throws Exception {
+        MembershipDTO membershipDTO = membershipService.getMembershipById(membershipId);
+        return ResponseEntity.ok(membershipDTO);
+    }
+
     @PostMapping
     public ResponseEntity<MembershipDTO> createMembership(@RequestBody @Valid CreateMembershipRequest createMembeshipRequest) throws Exception {
         MembershipDTO membershipDTO = membershipService.createMembership(createMembeshipRequest);
         return ResponseEntity.ok().body(membershipDTO);
     }
-
-//    @GetMapping
-//    public ResponseEntity<List<Membership>> getAll(){
-//        return ResponseEntity.ok(this.membershipService.getAll());
-//    }
-//
-//    @GetMapping("/{membershipId}")
-//    public ResponseEntity<Membership> getById(@PathVariable int membershipId){
-//        return ResponseEntity.ok(this.membershipService.getById(membershipId));
-//    }
-//
-//    @PostMapping
-//    public ResponseEntity<Membership> save(@RequestBody Membership membership){
-//        return ResponseEntity.ok(this.membershipService.save(membership));
-//    }
 
 }

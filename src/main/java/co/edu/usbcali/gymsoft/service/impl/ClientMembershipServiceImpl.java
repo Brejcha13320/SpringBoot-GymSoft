@@ -4,14 +4,19 @@ import co.edu.usbcali.gymsoft.domain.Client;
 import co.edu.usbcali.gymsoft.domain.ClientMembership;
 import co.edu.usbcali.gymsoft.domain.Membership;
 import co.edu.usbcali.gymsoft.dto.ClientMembershipDTO;
+import co.edu.usbcali.gymsoft.dto.MembershipDTO;
 import co.edu.usbcali.gymsoft.dto.request.CreateClientMembershipRequest;
 import co.edu.usbcali.gymsoft.mapper.ClientMembershipMapper;
+import co.edu.usbcali.gymsoft.mapper.MembershipMapper;
 import co.edu.usbcali.gymsoft.repository.ClientMembershipRepository;
 import co.edu.usbcali.gymsoft.repository.ClientRepository;
 import co.edu.usbcali.gymsoft.repository.MembershipRepository;
 import co.edu.usbcali.gymsoft.service.ClientMembershipService;
 import co.edu.usbcali.gymsoft.utils.validation.ClientMembershipMessage;
+import co.edu.usbcali.gymsoft.utils.validation.ClientMessage;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class ClientMembershipServiceImpl implements ClientMembershipService {
@@ -28,6 +33,21 @@ public class ClientMembershipServiceImpl implements ClientMembershipService {
         this.clientMembershipRepository = clientMembershipRepository;
         this.membershipRepository = membershipRepository;
         this.clientRepository = clientRepository;
+    }
+
+    @Override
+    public List<ClientMembershipDTO> getAllClientMemberships() throws Exception {
+        List<ClientMembership> clientMembership = clientMembershipRepository.findAll();
+        return ClientMembershipMapper.domainToDtoList(clientMembership);
+    }
+
+    @Override
+    public ClientMembershipDTO getClientMembershipById(Integer clientMembershipId) throws Exception {
+        ClientMembership clientMembership = clientMembershipRepository.findById(clientMembershipId).orElseThrow(
+                () -> new Exception(String.format(ClientMessage.NOT_EXISTS_BY_CLIENT_MEMBERSHIP_ID, clientMembershipId))
+        );
+
+        return ClientMembershipMapper.domainToDto(clientMembership);
     }
 
     @Override

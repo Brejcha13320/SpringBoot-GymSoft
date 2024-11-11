@@ -1,12 +1,15 @@
 package co.edu.usbcali.gymsoft.web;
 
 import co.edu.usbcali.gymsoft.dto.ClientMembershipDTO;
+import co.edu.usbcali.gymsoft.dto.MembershipDTO;
 import co.edu.usbcali.gymsoft.dto.request.CreateClientMembershipRequest;
 import co.edu.usbcali.gymsoft.service.ClientMembershipService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 
 @RestController
@@ -18,6 +21,18 @@ public class ClientMembershipController {
     @Autowired
     public ClientMembershipController(ClientMembershipService clientMembershipService) {
         this.clientMembershipService = clientMembershipService;
+    }
+
+    @GetMapping(value = "/all")
+    public ResponseEntity<List<ClientMembershipDTO>> getAllClientMemberships() throws Exception {
+        List<ClientMembershipDTO> listClientMembershipDTO = clientMembershipService.getAllClientMemberships();
+        return ResponseEntity.ok(listClientMembershipDTO);
+    }
+
+    @GetMapping(value = "/one/{clientMembershipId}")
+    public ResponseEntity<ClientMembershipDTO> getClientMembershipById(@PathVariable Integer clientMembershipId) throws Exception {
+        ClientMembershipDTO clientMembershipDTO = clientMembershipService.getClientMembershipById(clientMembershipId);
+        return ResponseEntity.ok(clientMembershipDTO);
     }
 
     @PostMapping
