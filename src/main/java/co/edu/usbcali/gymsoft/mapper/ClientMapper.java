@@ -2,6 +2,8 @@ package co.edu.usbcali.gymsoft.mapper;
 
 import co.edu.usbcali.gymsoft.domain.Client;
 import co.edu.usbcali.gymsoft.dto.ClientDTO;
+import co.edu.usbcali.gymsoft.dto.request.CreateClientRequest;
+import co.edu.usbcali.gymsoft.utils.Constants;
 
 import java.util.List;
 
@@ -41,6 +43,17 @@ public class ClientMapper {
 
     public static List<Client> dtoToDomainList(List<ClientDTO> clientsDTO){
         return clientsDTO.stream().map(ClientMapper::dtoToDomain).toList();
+    }
+
+    public static Client createClientRequestToDomain(CreateClientRequest createClientRequest){
+        return Client.builder()
+                .firstName(createClientRequest.getFirstName())
+                .lastName(createClientRequest.getLastName())
+                .address(createClientRequest.getAddress())
+                .email(createClientRequest.getEmail())
+                .phone(createClientRequest.getPhone())
+                .enabled(Constants.ENABLE_ACTIVE)
+                .build();
     }
 
 }
