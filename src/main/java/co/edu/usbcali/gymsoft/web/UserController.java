@@ -28,6 +28,12 @@ public class UserController {
         return ResponseEntity.ok(usersDTO);
     }
 
+    @GetMapping(value = "/one/{userId}")
+    public ResponseEntity<UserDTO> getUserById(@PathVariable Integer userId) throws Exception {
+        UserDTO userDTO = userService.findUserById(userId);
+        return ResponseEntity.ok(userDTO);
+    }
+
     @PostMapping
     public ResponseEntity<UserDTO> createUser(@RequestBody @Valid CreateUserRequest createUserRequest) throws Exception {
         UserDTO userDTO = userService.createUser(createUserRequest);

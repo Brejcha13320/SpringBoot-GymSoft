@@ -9,6 +9,8 @@ public interface UserService {
 
     public List<UserDTO> findAllUsers() throws Exception;
 
+    public UserDTO findUserById(Integer userId) throws Exception;
+
     public UserDTO createUser(CreateUserRequest createUserRequest) throws Exception;
 
 }
