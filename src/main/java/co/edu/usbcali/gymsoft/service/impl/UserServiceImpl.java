@@ -9,6 +9,8 @@ import co.edu.usbcali.gymsoft.service.UserService;
 import co.edu.usbcali.gymsoft.utils.validation.UserMessage;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -16,6 +18,13 @@ public class UserServiceImpl implements UserService {
 
     public UserServiceImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
+    }
+
+
+    @Override
+    public List<UserDTO> findAllUsers() throws Exception {
+        List<User> users = userRepository.findAll();
+        return UserMapper.domainToDtoList(users);
     }
 
     @Override
