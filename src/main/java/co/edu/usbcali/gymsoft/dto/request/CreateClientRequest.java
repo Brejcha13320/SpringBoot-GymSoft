@@ -1,7 +1,6 @@
 package co.edu.usbcali.gymsoft.dto.request;
 
 import co.edu.usbcali.gymsoft.utils.validation.ClientMessage;
-import co.edu.usbcali.gymsoft.utils.validation.UserMessage;
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
