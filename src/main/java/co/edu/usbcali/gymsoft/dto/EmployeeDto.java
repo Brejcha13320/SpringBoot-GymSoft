@@ -22,5 +22,7 @@ public class EmployeeDto {
     private Boolean enabled;
     private Date createdAt;
     private Date updatedAt;
-    private UserDto user;
+
+    //Employee Depende de un User
+    private Integer userId;
 }

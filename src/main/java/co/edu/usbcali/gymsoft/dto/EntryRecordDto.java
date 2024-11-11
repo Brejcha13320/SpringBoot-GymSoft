@@ -13,6 +13,8 @@ import java.util.Date;
 @NoArgsConstructor
 public class EntryRecordDto {
     private Integer entryRecordId;
-    private ClientMembershipDto clientMembership;
     private Date entryDate;
+
+    //EntryRecord depende de ClientMemberships
+    private Integer clientMembershipId;
 }

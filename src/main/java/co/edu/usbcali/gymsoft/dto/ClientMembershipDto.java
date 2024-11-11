@@ -22,6 +22,8 @@ public class ClientMembershipDto {
     private Boolean enabled;
     private Date createdAt;
     private Date updatedAt;
-    private ClientDto client;
-    private MembershipDto membership;
+
+    //ClientMembership depende de Client y Membership
+    private Integer clientId;
+    private Integer membershipId;
 }

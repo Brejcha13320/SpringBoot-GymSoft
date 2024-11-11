@@ -22,5 +22,4 @@ public class ClientDto {
     private Boolean enabled;
     private Date createdAt;
     private Date updatedAt;
-    private List<ClientMembershipDto> clientMemberships;
 }
