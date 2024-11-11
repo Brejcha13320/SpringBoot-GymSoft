@@ -8,6 +8,7 @@ import java.util.List;
 public interface EmployeeService {
 
     public List<EmployeeDTO> findAllEmployees() throws Exception;
+    public EmployeeDTO findEmployeeById(Integer employeeId) throws Exception;
     public EmployeeDTO createEmployee(CreateEmployeeRequest createEmployeeRequest) throws Exception;
 
 }

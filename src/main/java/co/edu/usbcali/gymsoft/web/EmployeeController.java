@@ -28,6 +28,12 @@ public class EmployeeController {
         return ResponseEntity.ok(employeeDTO);
     }
 
+    @GetMapping(value = "/one/{employeeId}")
+    public ResponseEntity<EmployeeDTO> getEmployeeById(@PathVariable Integer employeeId) throws Exception{
+        EmployeeDTO employeeDTO = employeeService.findEmployeeById(employeeId);
+        return ResponseEntity.ok(employeeDTO);
+    }
+
     @PostMapping
     public ResponseEntity<EmployeeDTO> createEmployee(@RequestBody @Valid CreateEmployeeRequest createEmployeeRequest) throws Exception{
         EmployeeDTO employeeDTO = employeeService.createEmployee(createEmployeeRequest);

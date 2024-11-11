@@ -10,6 +10,8 @@ import co.edu.usbcali.gymsoft.mapper.UserMapper;
 import co.edu.usbcali.gymsoft.repository.EmployeeRepository;
 import co.edu.usbcali.gymsoft.repository.UserRepository;
 import co.edu.usbcali.gymsoft.service.EmployeeService;
+import co.edu.usbcali.gymsoft.utils.validation.EmployeeMessage;
+import co.edu.usbcali.gymsoft.utils.validation.UserMessage;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -30,8 +32,16 @@ public class EmployeeServiceImpl implements  EmployeeService {
     }
 
     @Override
-    public EmployeeDTO createEmployee(CreateEmployeeRequest createEmployeeRequest) throws Exception {
+    public EmployeeDTO findEmployeeById(Integer employeeId) throws Exception{
+        Employee employee = employeeRepository.findById(employeeId).orElseThrow(
+                () -> new Exception(String.format(EmployeeMessage.NOT_EXISTS_BY_EMPLOYEE_ID, employeeId))
+        );
 
+        return EmployeeMapper.domainToDto(employee);
+    }
+
+    @Override
+    public EmployeeDTO createEmployee(CreateEmployeeRequest createEmployeeRequest) throws Exception {
         Employee employee = EmployeeMapper.createEmployeeRequestToDomain(createEmployeeRequest);
         employee = employeeRepository.save(employee);
         EmployeeDTO employeeDTO = EmployeeMapper.domainToDto(employee);

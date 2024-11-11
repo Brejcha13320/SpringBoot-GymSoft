@@ -15,7 +15,7 @@ public class EmployeeMessage {
     // Tipo empleado
     public static final String NOT_NULL_EMPLOYEE_TYPE = "El tipo de empleado no puede ser nulo";
     public static final String NOT_EMPTY_EMPLOYEE_TYPE = "El tipo de empleado no puede estar vacío";
-
+    public static final String NOT_EXISTS_BY_EMPLOYEE_ID = "El empleado no existe";
     // Dirección
     public static final String NOT_NULL_ADDRESS = "La dirección no puede ser nula";
     public static final String NOT_EMPTY_ADDRESS = "La dirección no puede estar vacía";
