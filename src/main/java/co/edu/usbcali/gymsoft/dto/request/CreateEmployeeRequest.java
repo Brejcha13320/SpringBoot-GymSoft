@@ -41,7 +41,7 @@ public class CreateEmployeeRequest {
     @NotEmpty(message = EmployeeMessage.NOT_EMPTY_EMAIL)
     private String email;
 
-    @Pattern(regexp = "\\d{7,15}", message = EmployeeMessage.INVALID_PHONE)
+    @Pattern(regexp = "\\d+", message = EmployeeMessage.INVALID_PHONE)
     @NotEmpty(message = EmployeeMessage.NOT_EMPTY_PHONE)
     @Size(max = 30, min = 5, message = EmployeeMessage.SIZE_PHONE)
     private String phone;
