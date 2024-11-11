@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class CreateMembeshipRequest {
+public class CreateMembershipRequest {
     @NotNull(message = MembershipMessage.NOT_NULL_TYPE)
     @NotEmpty(message = MembershipMessage.NOT_EMPTY_TYPE)
     private String type;

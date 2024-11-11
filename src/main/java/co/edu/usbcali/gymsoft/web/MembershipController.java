@@ -1,7 +1,7 @@
 package co.edu.usbcali.gymsoft.web;
 
 import co.edu.usbcali.gymsoft.dto.MembershipDTO;
-import co.edu.usbcali.gymsoft.dto.request.CreateMembeshipRequest;
+import co.edu.usbcali.gymsoft.dto.request.CreateMembershipRequest;
 import co.edu.usbcali.gymsoft.service.MembershipService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +20,7 @@ public class MembershipController {
     }
 
     @PostMapping
-    public ResponseEntity<MembershipDTO> createMembership(@RequestBody @Valid CreateMembeshipRequest createMembeshipRequest) throws Exception {
+    public ResponseEntity<MembershipDTO> createMembership(@RequestBody @Valid CreateMembershipRequest createMembeshipRequest) throws Exception {
         MembershipDTO membershipDTO = membershipService.createMembership(createMembeshipRequest);
         return ResponseEntity.ok().body(membershipDTO);
     }

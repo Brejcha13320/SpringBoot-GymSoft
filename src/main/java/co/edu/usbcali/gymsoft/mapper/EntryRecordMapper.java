@@ -2,6 +2,7 @@ package co.edu.usbcali.gymsoft.mapper;
 
 import co.edu.usbcali.gymsoft.domain.EntryRecord;
 import co.edu.usbcali.gymsoft.dto.EntryRecordDTO;
+import co.edu.usbcali.gymsoft.dto.request.CreateEntryRecordRequest;
 
 import java.util.List;
 
@@ -28,6 +29,12 @@ public class EntryRecordMapper {
 
     public static List<EntryRecord> dtoToDomainList(List<EntryRecordDTO> entryRecordsDTO){
         return entryRecordsDTO.stream().map(EntryRecordMapper::dtoToDomain).toList();
+    }
+
+    public static EntryRecord createEntryRecord(CreateEntryRecordRequest createEntryRecordRequest){
+        return EntryRecord.builder()
+                .entryDate(createEntryRecordRequest.getEntryDate())
+                .build();
     }
 
 }

@@ -1,10 +1,10 @@
 package co.edu.usbcali.gymsoft.service;
 
 import co.edu.usbcali.gymsoft.dto.MembershipDTO;
-import co.edu.usbcali.gymsoft.dto.request.CreateMembeshipRequest;
+import co.edu.usbcali.gymsoft.dto.request.CreateMembershipRequest;
 
 public interface MembershipService {
 
-    public MembershipDTO createMembership(CreateMembeshipRequest createMembeshipRequest) throws Exception;
+    public MembershipDTO createMembership(CreateMembershipRequest createMembeshipRequest) throws Exception;
 
 }

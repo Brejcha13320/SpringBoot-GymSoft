@@ -1,9 +1,7 @@
 package co.edu.usbcali.gymsoft.mapper;
 
 import co.edu.usbcali.gymsoft.domain.Employee;
-import co.edu.usbcali.gymsoft.domain.Membership;
 import co.edu.usbcali.gymsoft.dto.EmployeeDTO;
-import co.edu.usbcali.gymsoft.dto.MembershipDTO;
 import co.edu.usbcali.gymsoft.dto.request.CreateEmployeeRequest;
 
 import java.util.List;

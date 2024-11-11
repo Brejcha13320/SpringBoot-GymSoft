@@ -1,9 +1,9 @@
 package co.edu.usbcali.gymsoft.mapper;
 
-import co.edu.usbcali.gymsoft.domain.Client;
 import co.edu.usbcali.gymsoft.domain.ClientMembership;
-import co.edu.usbcali.gymsoft.dto.ClientDTO;
 import co.edu.usbcali.gymsoft.dto.ClientMembershipDTO;
+import co.edu.usbcali.gymsoft.dto.request.CreateClientMembershipRequest;
+import co.edu.usbcali.gymsoft.utils.Constants;
 
 import java.util.List;
 
@@ -47,6 +47,18 @@ public class ClientMembershipMapper {
 
     public static List<ClientMembership> dtoToDomainList(List<ClientMembershipDTO> clientsMembershipsDTO){
         return clientsMembershipsDTO.stream().map(ClientMembershipMapper::dtoToDomain).toList();
+    }
+
+    public static ClientMembership createClientMembershipRequestToDomain(CreateClientMembershipRequest createClientMembershipRequest){
+        return ClientMembership.builder()
+                .startDate(createClientMembershipRequest.getStartDate())
+                .endDate(createClientMembershipRequest.getEndDate())
+                .remainingDays(createClientMembershipRequest.getRemainingDays())
+                .quantity(createClientMembershipRequest.getQuantity())
+                .cost(createClientMembershipRequest.getCost())
+                .price(createClientMembershipRequest.getPrice())
+                .enabled(Constants.ENABLE_ACTIVE)
+                .build();
     }
 
 }
