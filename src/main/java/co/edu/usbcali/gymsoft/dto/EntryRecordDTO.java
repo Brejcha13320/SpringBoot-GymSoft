@@ -15,5 +15,7 @@ import java.util.Date;
 public class EntryRecordDTO {
     private Integer entryRecordId;
     private Date entryDate;
+
+    //EntryRecord depende de ClientMembership
     private Integer clientMembershipId;
 }

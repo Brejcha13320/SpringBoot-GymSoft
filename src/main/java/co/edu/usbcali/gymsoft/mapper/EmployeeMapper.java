@@ -51,7 +51,6 @@ public class EmployeeMapper {
 
     public static Employee createEmployeeRequestToDomain(CreateEmployeeRequest createEmployeeRequest){
         return Employee.builder()
-
                 .build();
     }
 

@@ -1,5 +1,8 @@
 package co.edu.usbcali.gymsoft.dto.request;
 
+import co.edu.usbcali.gymsoft.utils.validation.UserMessage;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -16,16 +19,18 @@ import java.util.Date;
 @NoArgsConstructor
 public class CreateUserRequest {
 
-    @NotNull(message = "El username no puede ser nulo")
-    @NotEmpty(message = "El username no puede estar vacio")
-    @Size(max = 10, min = 3, message = "El username no puede tener menos de 3 caracteres y mas de 10 caracteres")
+    @NotNull(message = UserMessage.NOT_NULL_USERNAME)
+    @NotEmpty(message = UserMessage.NOT_EMPTY_USERNAME)
+    @Size(max = 10, min = 3, message = UserMessage.SIZE_USERNAME)
     private String username;
 
-    @NotNull(message = "El password no puede ser nulo")
-    @NotEmpty(message = "El password no puede estar vacio")
+    @NotNull(message = UserMessage.NOT_NULL_PASSWORD)
+    @NotEmpty(message = UserMessage.NOT_EMPTY_PASSWORD)
+    @Size(max = 15, min = 3, message = UserMessage.SIZE_PASSWORD)
     private String password;
 
-    @NotNull(message = "El role no puede ser nulo")
-    @NotEmpty(message = "El role no puede estar vacio")
+    @NotNull(message = UserMessage.NOT_NULL_ROLE)
+    @NotEmpty(message = UserMessage.NOT_EMPTY_ROLE)
     private String role;
+
 }
