@@ -37,6 +37,8 @@ public class EmployeeController {
     @PostMapping
     public ResponseEntity<EmployeeDTO> createEmployee(@RequestBody @Valid CreateEmployeeRequest createEmployeeRequest) throws Exception{
         EmployeeDTO employeeDTO = employeeService.createEmployee(createEmployeeRequest);
+        System.out.println("***************************");
+        System.out.println(employeeDTO);
         return ResponseEntity.ok(employeeDTO);
     }
 
