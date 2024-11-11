@@ -9,28 +9,28 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
-@Service
+//@Service
 public class EmployeeServiceOld {
 
-    private final EmployeeRepository employeeRepository;
-
-    @Autowired
-    public EmployeeServiceOld(EmployeeRepository employeeRepository) {
-        this.employeeRepository = employeeRepository;
-    }
-
-    public Employee getById(int employeeId){
-
-        return this.employeeRepository.findById(employeeId).orElseThrow(() ->
-            new ResponseStatusException(HttpStatus.NOT_FOUND, "Employee not found"));
-    }
-
-    public List<Employee> getAll(){
-        return this.employeeRepository.findAll();
-    }
-
-    public Employee save(Employee employee){
-        return this.employeeRepository.save(employee);
-    }
+//    private final EmployeeRepository employeeRepository;
+//
+//    @Autowired
+//    public EmployeeServiceOld(EmployeeRepository employeeRepository) {
+//        this.employeeRepository = employeeRepository;
+//    }
+//
+//    public Employee getById(int employeeId){
+//
+//        return this.employeeRepository.findById(employeeId).orElseThrow(() ->
+//            new ResponseStatusException(HttpStatus.NOT_FOUND, "Employee not found"));
+//    }
+//
+//    public List<Employee> getAll(){
+//        return this.employeeRepository.findAll();
+//    }
+//
+//    public Employee save(Employee employee){
+//        return this.employeeRepository.save(employee);
+//    }
 
 }

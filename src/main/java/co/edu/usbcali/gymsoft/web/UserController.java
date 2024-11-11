@@ -4,6 +4,7 @@ import co.edu.usbcali.gymsoft.domain.User;
 import co.edu.usbcali.gymsoft.dto.UserDTO;
 import co.edu.usbcali.gymsoft.dto.request.CreateUserRequest;
 import co.edu.usbcali.gymsoft.service.UserService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -32,7 +33,7 @@ public class UserController {
 //    }
 
     @PostMapping
-    public ResponseEntity<UserDTO> createUser(@RequestBody CreateUserRequest createUserRequest) throws Exception {
+    public ResponseEntity<UserDTO> createUser(@RequestBody @Valid CreateUserRequest createUserRequest) throws Exception {
         UserDTO userDTO = userService.createUser(createUserRequest);
         return ResponseEntity.ok(userDTO);
     }

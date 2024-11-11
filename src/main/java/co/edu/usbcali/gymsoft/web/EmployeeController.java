@@ -12,27 +12,27 @@ import java.util.List;
 @RequestMapping("/api/employee")
 public class EmployeeController {
 
-    private final EmployeeServiceOld employeeService;
-
-    @Autowired
-    public EmployeeController(EmployeeServiceOld employeeService) {
-        this.employeeService = employeeService;
-    }
-
-    @GetMapping
-    public ResponseEntity<List<Employee>> getAll(){
-        return ResponseEntity.ok(employeeService.getAll());
-    }
-
-    @GetMapping("/{employeeId}")
-    public ResponseEntity<Employee> getById(@PathVariable int employeeId){
-        return ResponseEntity.ok(employeeService.getById(employeeId));
-    }
-
-    @PostMapping
-    public ResponseEntity<Employee> save(@RequestBody Employee employee){
-        return ResponseEntity.ok(employeeService.save(employee));
-    }
+//    private final EmployeeServiceOld employeeService;
+//
+//    @Autowired
+//    public EmployeeController(EmployeeServiceOld employeeService) {
+//        this.employeeService = employeeService;
+//    }
+//
+//    @GetMapping
+//    public ResponseEntity<List<Employee>> getAll(){
+//        return ResponseEntity.ok(employeeService.getAll());
+//    }
+//
+//    @GetMapping("/{employeeId}")
+//    public ResponseEntity<Employee> getById(@PathVariable int employeeId){
+//        return ResponseEntity.ok(employeeService.getById(employeeId));
+//    }
+//
+//    @PostMapping
+//    public ResponseEntity<Employee> save(@RequestBody Employee employee){
+//        return ResponseEntity.ok(employeeService.save(employee));
+//    }
 
 
 }

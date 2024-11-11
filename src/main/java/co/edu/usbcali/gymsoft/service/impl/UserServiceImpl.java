@@ -6,6 +6,7 @@ import co.edu.usbcali.gymsoft.dto.request.CreateUserRequest;
 import co.edu.usbcali.gymsoft.mapper.UserMapper;
 import co.edu.usbcali.gymsoft.repository.UserRepository;
 import co.edu.usbcali.gymsoft.service.UserService;
+import co.edu.usbcali.gymsoft.utils.validation.UserMessage;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -19,19 +20,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDTO createUser(CreateUserRequest createUserRequest) throws Exception {
-        //Validar que el username no sea null
-        if(createUserRequest.getUsername() == null || createUserRequest.getUsername().equals("")){
-            throw new Exception("El username es obligatorio");
-        }
 
-        //Validar que el password no sea null
-        if(createUserRequest.getPassword() == null || createUserRequest.getPassword().equals("")){
-            throw new Exception("El username es obligatorio");
-        }
-
-        //Validar que el role no sea null
-        if(createUserRequest.getRole() == null || createUserRequest.getRole().equals("")){
-            throw new Exception("El role es obligatorio");
+        //Validar si ya existe un usuario con ese username
+        Boolean existsByUsername = userRepository.existsByUsername(createUserRequest.getUsername());
+        if (existsByUsername) {
+            throw new Exception(String.format(UserMessage.EXISTS_BY_USERNAME, createUserRequest.getUsername()));
         }
 
         User user = UserMapper.createUserRequestToDomain(createUserRequest);
