@@ -3,6 +3,7 @@ package co.edu.usbcali.gymsoft.mapper;
 import co.edu.usbcali.gymsoft.domain.Membership;
 import co.edu.usbcali.gymsoft.dto.MembershipDTO;
 import co.edu.usbcali.gymsoft.dto.request.CreateMembershipRequest;
+import co.edu.usbcali.gymsoft.dto.request.UpdateMembershipRequest;
 import co.edu.usbcali.gymsoft.utils.Constants;
 
 import java.util.List;
@@ -50,4 +51,11 @@ public class MembershipMapper {
                 .build();
     }
 
+    public static Membership updateMembershipRequestToDomain(Membership membership, UpdateMembershipRequest updateMembershipRequest) {
+        membership.setType(updateMembershipRequest.getType());
+        membership.setDescription(updateMembershipRequest.getDescription());
+        membership.setCost(updateMembershipRequest.getCost());
+        membership.setEnabled(updateMembershipRequest.getEnabled());
+        return membership;
+    }
 }

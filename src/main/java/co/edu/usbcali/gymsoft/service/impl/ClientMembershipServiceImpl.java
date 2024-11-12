@@ -5,6 +5,7 @@ import co.edu.usbcali.gymsoft.domain.ClientMembership;
 import co.edu.usbcali.gymsoft.domain.Membership;
 import co.edu.usbcali.gymsoft.dto.ClientMembershipDTO;
 import co.edu.usbcali.gymsoft.dto.request.CreateClientMembershipRequest;
+import co.edu.usbcali.gymsoft.dto.request.UpdateClientMembershipRequest;
 import co.edu.usbcali.gymsoft.mapper.ClientMembershipMapper;
 import co.edu.usbcali.gymsoft.repository.ClientMembershipRepository;
 import co.edu.usbcali.gymsoft.repository.ClientRepository;
@@ -68,6 +69,15 @@ public class ClientMembershipServiceImpl implements ClientMembershipService {
         ClientMembership clientMembership = ClientMembershipMapper.createClientMembershipRequestToDomain(createClientMembershipRequest);
         clientMembership.setClient(client);
         clientMembership.setMembership(membership);
+        clientMembership = clientMembershipRepository.save(clientMembership);
+        return ClientMembershipMapper.domainToDto(clientMembership);
+    }
+
+    @Override
+    public ClientMembershipDTO updateClientMembership(Integer clientMembershipId, UpdateClientMembershipRequest updateClientMembershipRequest) throws Exception {
+        ClientMembershipDTO clientMembershipDTO = getClientMembershipById(clientMembershipId);
+        ClientMembership clientMembership = ClientMembershipMapper.dtoToDomain(clientMembershipDTO);
+        clientMembership = ClientMembershipMapper.updateClientMembershipRequestToDomain(clientMembership, updateClientMembershipRequest);
         clientMembership = clientMembershipRepository.save(clientMembership);
         return ClientMembershipMapper.domainToDto(clientMembership);
     }

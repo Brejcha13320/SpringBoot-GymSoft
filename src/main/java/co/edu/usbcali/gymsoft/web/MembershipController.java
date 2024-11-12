@@ -2,6 +2,7 @@ package co.edu.usbcali.gymsoft.web;
 
 import co.edu.usbcali.gymsoft.dto.MembershipDTO;
 import co.edu.usbcali.gymsoft.dto.request.CreateMembershipRequest;
+import co.edu.usbcali.gymsoft.dto.request.UpdateMembershipRequest;
 import co.edu.usbcali.gymsoft.service.MembershipService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +38,14 @@ public class MembershipController {
     public ResponseEntity<MembershipDTO> createMembership(@RequestBody @Valid CreateMembershipRequest createMembeshipRequest) throws Exception {
         MembershipDTO membershipDTO = membershipService.createMembership(createMembeshipRequest);
         return ResponseEntity.ok().body(membershipDTO);
+    }
+
+    @PutMapping(value = "/update/{membershipId}")
+    public ResponseEntity<MembershipDTO> updateMembership(
+            @PathVariable Integer membershipId,
+            @RequestBody @Valid UpdateMembershipRequest updateMembershipRequest) throws Exception {
+        MembershipDTO membershipDTO = membershipService.updateMembership(membershipId, updateMembershipRequest);
+        return ResponseEntity.ok(membershipDTO);
     }
 
     @DeleteMapping(value = "/delete/{membershipId}")
