@@ -1,7 +1,6 @@
 package co.edu.usbcali.gymsoft.domain;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.NotEmpty;
@@ -53,7 +52,8 @@ public class Employee {
     @Temporal(TemporalType.TIMESTAMP)
     private Date updatedAt;
 
-    @OneToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "user_id")
+    @OneToOne(optional = true)
+    @JoinColumn(name = "user_id", referencedColumnName = "user_id", nullable = true)
+    @JsonIgnoreProperties("employee")
     private User user;
 }

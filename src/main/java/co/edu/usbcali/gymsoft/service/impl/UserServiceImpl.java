@@ -1,9 +1,12 @@
 package co.edu.usbcali.gymsoft.service.impl;
 
+import co.edu.usbcali.gymsoft.domain.ClientMembership;
 import co.edu.usbcali.gymsoft.domain.User;
+import co.edu.usbcali.gymsoft.dto.ClientMembershipDTO;
 import co.edu.usbcali.gymsoft.dto.UserDTO;
 import co.edu.usbcali.gymsoft.dto.request.CreateUserRequest;
 import co.edu.usbcali.gymsoft.dto.request.UpdateUserRequest;
+import co.edu.usbcali.gymsoft.mapper.ClientMembershipMapper;
 import co.edu.usbcali.gymsoft.mapper.UserMapper;
 import co.edu.usbcali.gymsoft.repository.UserRepository;
 import co.edu.usbcali.gymsoft.service.UserService;
@@ -59,6 +62,13 @@ public class UserServiceImpl implements UserService {
         user = UserMapper.updateUserRequestToDomain(user, updateUserRequest);
         user = userRepository.save(user);
         return UserMapper.domainToDto(user);
+    }
+
+    @Override
+    public void deleteUser(Integer userId) throws Exception {
+        UserDTO userDTO = findUserById(userId);
+        User user = UserMapper.dtoToDomain(userDTO);
+        userRepository.delete(user);
     }
 
 }

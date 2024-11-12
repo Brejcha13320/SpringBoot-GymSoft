@@ -8,11 +8,9 @@ import java.util.List;
 
 public interface ClientService {
 
-    public List<ClientDTO> getAllClients() throws Exception;
-
-    public ClientDTO getClientById(Integer clientId) throws Exception;
-
-    public ClientDTO createClient(CreateClientRequest createClientRequest) throws Exception;
-
-    public ClientDTO updateClient(Integer clientId, UpdateClientRequest updateClientRequest) throws Exception;
+    List<ClientDTO> getAllClients() throws Exception;
+    ClientDTO getClientById(Integer clientId) throws Exception;
+    ClientDTO createClient(CreateClientRequest createClientRequest) throws Exception;
+    ClientDTO updateClient(Integer clientId, UpdateClientRequest updateClientRequest) throws Exception;
+    void deleteClient(Integer clientId) throws Exception;
 }

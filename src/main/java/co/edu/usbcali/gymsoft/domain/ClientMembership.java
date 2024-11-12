@@ -7,7 +7,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @Builder
@@ -58,4 +60,9 @@ public class ClientMembership {
     @JoinColumn(name = "membership_id", referencedColumnName = "membership_id")
     @JsonIgnoreProperties("clientMemberships")
     private Membership membership;
+
+    @Builder.Default
+    @OneToMany(mappedBy = "clientMembership", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnoreProperties("clientMembership")
+    private List<EntryRecord> entryRecords = new ArrayList<>();
 }
