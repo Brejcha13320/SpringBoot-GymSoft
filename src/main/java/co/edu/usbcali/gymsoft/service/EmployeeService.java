@@ -12,4 +12,5 @@ public interface EmployeeService {
     public EmployeeDTO findEmployeeById(Integer employeeId) throws Exception;
     public EmployeeDTO createEmployee(CreateEmployeeRequest createEmployeeRequest) throws Exception;
     public EmployeeDTO updateEmployee(Integer employeeId, UpdateEmployeeRequest updateEmployeeRequest) throws Exception;
+    void deleteEmployee(Integer employeeId) throws Exception;
 }

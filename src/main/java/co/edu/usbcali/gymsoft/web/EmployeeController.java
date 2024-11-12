@@ -50,4 +50,10 @@ public class EmployeeController {
         return ResponseEntity.ok(employeeDTO);
     }
 
+    @DeleteMapping(value = "/delete/{employeeId}")
+    public ResponseEntity<Void> deleteEmployee(@PathVariable Integer employeeId) throws Exception{
+        employeeService.deleteEmployee(employeeId);
+        return ResponseEntity.noContent().build();
+    }
+
 }

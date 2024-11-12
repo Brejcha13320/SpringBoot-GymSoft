@@ -33,7 +33,7 @@ public class EmployeeMessage {
     public static final String SIZE_PHONE = "El teléfono debe tener entre 5 y 50 caracteres.";
 
     // Empleado
-    public static final String EXISTS_EMPLOYEE = "El empleado no existe.";
+    public static final String EXISTS_USER = "El usuario no existe.";
 }
 
 
