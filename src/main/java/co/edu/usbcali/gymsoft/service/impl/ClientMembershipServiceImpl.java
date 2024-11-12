@@ -71,4 +71,11 @@ public class ClientMembershipServiceImpl implements ClientMembershipService {
         clientMembership = clientMembershipRepository.save(clientMembership);
         return ClientMembershipMapper.domainToDto(clientMembership);
     }
+
+    @Override
+    public void deleteClientMembership(Integer clientMembershipId) throws Exception {
+        ClientMembershipDTO clientMembershipDTO = getClientMembershipById(clientMembershipId);
+        ClientMembership clientMembership = ClientMembershipMapper.dtoToDomain(clientMembershipDTO);
+        clientMembershipRepository.delete(clientMembership);
+    }
 }

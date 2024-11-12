@@ -1,8 +1,5 @@
 package co.edu.usbcali.gymsoft.domain;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -40,5 +37,5 @@ public class User {
 
     @Column(name = "updated_at")
     private Date updatedAt;
-    
+
 }

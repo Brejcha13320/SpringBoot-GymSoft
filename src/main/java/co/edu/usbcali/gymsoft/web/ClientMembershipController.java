@@ -40,4 +40,10 @@ public class ClientMembershipController {
         return ResponseEntity.ok().body(clientMembershipDTO);
     }
 
+    @DeleteMapping(value = "/delete/{clientMembershipId}")
+    public ResponseEntity<Void> deleteClientMembership(@PathVariable Integer clientMembershipId) throws Exception {
+        clientMembershipService.deleteClientMembership(clientMembershipId);
+        return ResponseEntity.noContent().build();
+    }
+
 }

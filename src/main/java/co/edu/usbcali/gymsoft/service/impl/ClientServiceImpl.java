@@ -59,5 +59,11 @@ public class ClientServiceImpl implements ClientService {
         return ClientMapper.domainToDto(client);
     }
 
+    @Override
+    public void deleteClient(Integer clientId) throws Exception {
+        ClientDTO clientDTO = getClientById(clientId);
+        Client client = ClientMapper.dtoToDomain(clientDTO);
+        clientRepository.delete(client);
+    }
 
 }
