@@ -8,12 +8,9 @@ import java.util.List;
 
 public interface UserService {
 
-    public List<UserDTO> findAllUsers() throws Exception;
-
-    public UserDTO findUserById(Integer userId) throws Exception;
-
-    public UserDTO createUser(CreateUserRequest createUserRequest) throws Exception;
-
-    public UserDTO updateUser(Integer userId, UpdateUserRequest updateUserRequest) throws Exception;
-
+    List<UserDTO> findAllUsers() throws Exception;
+    UserDTO findUserById(Integer userId) throws Exception;
+    UserDTO createUser(CreateUserRequest createUserRequest) throws Exception;
+    UserDTO updateUser(Integer userId, UpdateUserRequest updateUserRequest) throws Exception;
+    void deleteUser(Integer userId) throws Exception;
 }

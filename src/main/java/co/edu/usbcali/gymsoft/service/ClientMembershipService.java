@@ -7,8 +7,8 @@ import java.util.List;
 
 public interface ClientMembershipService {
 
-    public List<ClientMembershipDTO> getAllClientMemberships() throws Exception;
-    public ClientMembershipDTO getClientMembershipById(Integer clientMembershipId) throws Exception;
-    public ClientMembershipDTO createClientMembership(CreateClientMembershipRequest createClientMembershipRequest) throws Exception;
-
+    List<ClientMembershipDTO> getAllClientMemberships() throws Exception;
+    ClientMembershipDTO getClientMembershipById(Integer clientMembershipId) throws Exception;
+    ClientMembershipDTO createClientMembership(CreateClientMembershipRequest createClientMembershipRequest) throws Exception;
+    void deleteClientMembership(Integer clientMembershipId) throws Exception;
 }

@@ -43,4 +43,11 @@ public class MembershipServiceImpl implements MembershipService {
         MembershipDTO membershipDTO = MembershipMapper.domainToDto(membership);
         return membershipDTO;
     }
+
+    @Override
+    public void deleteMembership(Integer membershipId) throws Exception {
+        MembershipDTO membershipDTO = getMembershipById(membershipId);
+        Membership membership = MembershipMapper.dtoToDomain(membershipDTO);
+        membershipRepository.delete(membership);
+    }
 }

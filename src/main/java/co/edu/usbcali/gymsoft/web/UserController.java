@@ -46,4 +46,10 @@ public class UserController {
         return ResponseEntity.ok(userDTO);
     }
 
+    @DeleteMapping(value = "/delete/{userId}")
+    public ResponseEntity<Void> deleteUser(@PathVariable Integer userId) throws Exception {
+        userService.deleteUser(userId);
+        return ResponseEntity.noContent().build();
+    }
+
 }

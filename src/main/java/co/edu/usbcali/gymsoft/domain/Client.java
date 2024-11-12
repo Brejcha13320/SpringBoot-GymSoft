@@ -7,6 +7,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -46,7 +47,8 @@ public class Client {
     @Column(name = "updated_at")
     private Date updatedAt;
 
-    @OneToMany(mappedBy = "client")
+    @Builder.Default
+    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnoreProperties("client")
-    private List<ClientMembership> clientMemberships;
+    private List<ClientMembership> clientMemberships = new ArrayList<>();
 }

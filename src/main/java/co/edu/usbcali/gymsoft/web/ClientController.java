@@ -47,4 +47,9 @@ public class ClientController {
         return ResponseEntity.ok(clientDTO);
     }
 
+    @DeleteMapping(value = "/delete/{clientId}")
+    public ResponseEntity<Void> deleteClient(@PathVariable Integer clientId) throws Exception {
+        clientService.deleteClient(clientId);
+        return ResponseEntity.noContent().build();
+    }
 }
