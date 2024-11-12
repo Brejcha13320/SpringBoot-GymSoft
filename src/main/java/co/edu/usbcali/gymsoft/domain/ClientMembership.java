@@ -27,13 +27,13 @@ public class ClientMembership {
     @Column(name = "start_date", nullable = false)
     private Date startDate;
 
-    @Column(name = "end_date", nullable = false)
+    @Column(name = "end_date")
     private Date endDate;
 
-    @Column(name = "remaining_days", nullable = false, columnDefinition = "integer default 0")
+    @Column(name = "remaining_days")
     private Integer remainingDays;
 
-    @Column(name = "quantity", nullable = false, columnDefinition = "integer default 0")
+    @Column(name = "quantity", nullable = false, columnDefinition = "integer default 1")
     private Integer quantity;
 
     @Column(name = "cost", nullable = false, columnDefinition = "float default 0")
