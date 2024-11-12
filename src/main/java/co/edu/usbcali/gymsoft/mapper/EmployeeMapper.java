@@ -7,6 +7,7 @@ import java.util.Date;
 import co.edu.usbcali.gymsoft.domain.Employee;
 import co.edu.usbcali.gymsoft.dto.EmployeeDTO;
 import co.edu.usbcali.gymsoft.dto.request.CreateEmployeeRequest;
+import co.edu.usbcali.gymsoft.dto.request.UpdateEmployeeRequest;
 
 import java.util.List;
 
@@ -63,6 +64,18 @@ public class EmployeeMapper {
                 .updatedAt(Date.from(now.atZone(ZoneId.systemDefault()).toInstant()))
                 .createdAt(Date.from(now.atZone(ZoneId.systemDefault()).toInstant()))
                 .build();
+    }
+
+    public static Employee updateEmployeeRequestToDomain(Employee employee, UpdateEmployeeRequest updateEmployeeRequest){
+        LocalDateTime now = LocalDateTime.now();
+        employee.setFirstName(updateEmployeeRequest.getFirstName());
+        employee.setLastName(updateEmployeeRequest.getLastName());
+        employee.setEmployeeType(updateEmployeeRequest.getEmployeeType());
+        employee.setAddress(updateEmployeeRequest.getAddress());
+        employee.setEmail(updateEmployeeRequest.getEmail());
+        employee.setPhone(updateEmployeeRequest.getPhone());
+        employee.setUpdatedAt(Date.from(LocalDateTime.now().atZone(ZoneId.systemDefault()).toInstant()));
+        return employee;
     }
 
 }

@@ -5,6 +5,7 @@ import co.edu.usbcali.gymsoft.domain.User;
 import co.edu.usbcali.gymsoft.dto.EmployeeDTO;
 import co.edu.usbcali.gymsoft.dto.UserDTO;
 import co.edu.usbcali.gymsoft.dto.request.CreateEmployeeRequest;
+import co.edu.usbcali.gymsoft.dto.request.UpdateEmployeeRequest;
 import co.edu.usbcali.gymsoft.mapper.EmployeeMapper;
 import co.edu.usbcali.gymsoft.mapper.UserMapper;
 import co.edu.usbcali.gymsoft.repository.EmployeeRepository;
@@ -65,6 +66,15 @@ public class EmployeeServiceImpl implements  EmployeeService {
         employee = employeeRepository.save(employee);
         EmployeeDTO employeeDTO = EmployeeMapper.domainToDto(employee);
         return employeeDTO;
+    }
+
+    @Override
+    public EmployeeDTO updateEmployee(Integer employeeId, UpdateEmployeeRequest updateEmployeeRequest) throws Exception {
+        EmployeeDTO employeeDTO = findEmployeeById(employeeId);
+        Employee employee = EmployeeMapper.dtoToDomain(employeeDTO);
+        employee = EmployeeMapper.updateEmployeeRequestToDomain(employee, updateEmployeeRequest);
+        employee = employeeRepository.save(employee);
+        return EmployeeMapper.domainToDto(employee);
     }
 
 }

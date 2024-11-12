@@ -15,7 +15,8 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class CreateEmployeeRequest {
+
+public class UpdateEmployeeRequest {
 
     @NotNull(message = EmployeeMessage.NOT_NULL_FIRST_NAME)
     @NotEmpty(message = EmployeeMessage.NOT_EMPTY_FIRST_NAME)

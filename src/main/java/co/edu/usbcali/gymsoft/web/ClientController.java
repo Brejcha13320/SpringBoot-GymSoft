@@ -42,7 +42,8 @@ public class ClientController {
     @PutMapping(value = "/update/{clientId}")
     public ResponseEntity<ClientDTO> updateClient(
             @PathVariable Integer clientId,
-            @RequestBody @Valid UpdateClientRequest updateClientRequest) throws Exception {
+            @RequestBody @Valid UpdateClientRequest updateClientRequest
+    ) throws Exception {
         ClientDTO clientDTO = clientService.updateClient(clientId, updateClientRequest);
         return ResponseEntity.ok(clientDTO);
     }

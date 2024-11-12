@@ -4,6 +4,7 @@ import co.edu.usbcali.gymsoft.domain.Employee;
 //import co.edu.usbcali.gymsoft.services.old.EmployeeServiceOld;
 import co.edu.usbcali.gymsoft.dto.EmployeeDTO;
 import co.edu.usbcali.gymsoft.dto.request.CreateEmployeeRequest;
+import co.edu.usbcali.gymsoft.dto.request.UpdateEmployeeRequest;
 import co.edu.usbcali.gymsoft.service.EmployeeService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,8 +38,15 @@ public class EmployeeController {
     @PostMapping
     public ResponseEntity<EmployeeDTO> createEmployee(@RequestBody @Valid CreateEmployeeRequest createEmployeeRequest) throws Exception{
         EmployeeDTO employeeDTO = employeeService.createEmployee(createEmployeeRequest);
-        System.out.println("***************************");
-        System.out.println(employeeDTO);
+        return ResponseEntity.ok(employeeDTO);
+    }
+
+    @PutMapping(value = "/update/{employeeId}")
+    public ResponseEntity<EmployeeDTO> updateEmployee(
+            @PathVariable Integer employeeId,
+            @RequestBody @Valid UpdateEmployeeRequest updateEmployeeRequest
+    ) throws Exception {
+        EmployeeDTO employeeDTO = employeeService.updateEmployee(employeeId, updateEmployeeRequest);
         return ResponseEntity.ok(employeeDTO);
     }
 
