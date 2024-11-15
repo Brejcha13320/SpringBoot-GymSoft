@@ -1,5 +1,6 @@
 package co.edu.usbcali.gymsoft.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -23,10 +24,11 @@ public class EntryRecord {
     private Integer entryRecordId;
 
     @ManyToOne
-    @JoinColumn(name = "client_membership_id", referencedColumnName = "client_membership_id")
-    @JsonManagedReference
+    @JoinColumn(name = "client_membership_id", referencedColumnName = "client_membership_id",nullable = true)
+    @JsonIgnoreProperties("entry_records")
     private ClientMembership clientMembership;
 
     @Column(name = "entry_date")
+    @Temporal(TemporalType.TIMESTAMP)
     private Date entryDate;
 }
