@@ -6,18 +6,14 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import co.edu.usbcali.gymsoft.domain.User;
 import co.edu.usbcali.gymsoft.dto.UserDTO;
-import co.edu.usbcali.gymsoft.mapper.UserMapper;
 import co.edu.usbcali.gymsoft.repository.UserRepository;
 import co.edu.usbcali.gymsoft.service.impl.UserServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.junit.jupiter.MockitoSettings;
-import org.mockito.quality.Strictness;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -86,8 +82,8 @@ public class UserServiceTest {
 
     @BeforeEach
     void setUp(){
-        this.setMockUsers();
         this.setMockUser();
+        this.setMockUsers();
     }
 
     @Test
@@ -122,7 +118,6 @@ public class UserServiceTest {
         assertEquals(mockUser.getPassword(), result.getPassword());
         assertEquals(mockUser.getRole(), result.getRole());
         assertEquals(mockUser.getEnabled(), result.getEnabled());
-
     }
 
 }

@@ -1,7 +1,10 @@
 package co.edu.usbcali.gymsoft.web;
 
 import co.edu.usbcali.gymsoft.dto.ClientMembershipDTO;
+import co.edu.usbcali.gymsoft.dto.MembershipDTO;
 import co.edu.usbcali.gymsoft.dto.request.CreateClientMembershipRequest;
+import co.edu.usbcali.gymsoft.dto.request.UpdateClientMembershipRequest;
+import co.edu.usbcali.gymsoft.dto.request.UpdateMembershipRequest;
 import co.edu.usbcali.gymsoft.service.ClientMembershipService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,15 +32,27 @@ public class ClientMembershipController {
     }
 
     @GetMapping(value = "/one/{clientMembershipId}")
-    public ResponseEntity<ClientMembershipDTO> getClientMembershipById(@PathVariable Integer clientMembershipId) throws Exception {
+    public ResponseEntity<ClientMembershipDTO> getClientMembershipById(
+            @PathVariable Integer clientMembershipId) throws Exception {
         ClientMembershipDTO clientMembershipDTO = clientMembershipService.getClientMembershipById(clientMembershipId);
         return ResponseEntity.ok(clientMembershipDTO);
     }
 
     @PostMapping
-    public ResponseEntity<ClientMembershipDTO> createClientMembership(@RequestBody @Valid CreateClientMembershipRequest createClientMembershipRequest) throws Exception {
-        ClientMembershipDTO clientMembershipDTO = clientMembershipService.createClientMembership(createClientMembershipRequest);
+    public ResponseEntity<ClientMembershipDTO> createClientMembership(
+            @RequestBody @Valid CreateClientMembershipRequest createClientMembershipRequest) throws Exception {
+        ClientMembershipDTO clientMembershipDTO = clientMembershipService
+                .createClientMembership(createClientMembershipRequest);
         return ResponseEntity.ok().body(clientMembershipDTO);
+    }
+
+    @PutMapping(value = "/update/{clientMembershipId}")
+    public ResponseEntity<ClientMembershipDTO> updateClientMembershipDTO(
+            @PathVariable Integer clientMembershipId,
+            @RequestBody @Valid UpdateClientMembershipRequest updateClientMembershipRequest) throws Exception {
+        ClientMembershipDTO clientMembershipDTO = clientMembershipService.updateClientMembership(clientMembershipId,
+                updateClientMembershipRequest);
+        return ResponseEntity.ok(clientMembershipDTO);
     }
 
     @DeleteMapping(value = "/delete/{clientMembershipId}")

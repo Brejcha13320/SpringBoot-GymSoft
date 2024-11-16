@@ -4,6 +4,7 @@ package co.edu.usbcali.gymsoft.service.impl;
 import co.edu.usbcali.gymsoft.domain.Membership;
 import co.edu.usbcali.gymsoft.dto.MembershipDTO;
 import co.edu.usbcali.gymsoft.dto.request.CreateMembershipRequest;
+import co.edu.usbcali.gymsoft.dto.request.UpdateMembershipRequest;
 import co.edu.usbcali.gymsoft.mapper.MembershipMapper;
 import co.edu.usbcali.gymsoft.repository.MembershipRepository;
 import co.edu.usbcali.gymsoft.service.MembershipService;
@@ -42,6 +43,15 @@ public class MembershipServiceImpl implements MembershipService {
         membership = membershipRepository.save(membership);
         MembershipDTO membershipDTO = MembershipMapper.domainToDto(membership);
         return membershipDTO;
+    }
+
+    @Override
+    public MembershipDTO updateMembership(Integer membershipId, UpdateMembershipRequest updateMembershipRequest) throws Exception {
+        MembershipDTO membershipDTO = getMembershipById(membershipId);
+        Membership membership = MembershipMapper.dtoToDomain(membershipDTO);
+        membership = MembershipMapper.updateMembershipRequestToDomain(membership, updateMembershipRequest);
+        membership = membershipRepository.save(membership);
+        return MembershipMapper.domainToDto(membership);
     }
 
     @Override

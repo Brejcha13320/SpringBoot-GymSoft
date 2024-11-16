@@ -13,13 +13,7 @@ import java.util.Date;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class CreateClientMembershipRequest {
-
-    @NotNull(message = ClientMembershipMessage.NOT_NULL_CLIENT_ID)
-    private Integer clientId;
-
-    @NotNull(message = ClientMembershipMessage.NOT_NULL_MEMBERSHIP_ID)
-    private Integer membershipId;
+public class UpdateClientMembershipRequest {
 
     @NotNull(message = ClientMembershipMessage.NOT_NULL_START_DATE)
     private Date startDate;
@@ -29,7 +23,6 @@ public class CreateClientMembershipRequest {
     @Min(value = 1, message = ClientMembershipMessage.INVALID_REMAINING_DAYS)
     private Integer remainingDays;
 
-    @NotNull(message = ClientMembershipMessage.NOT_NULL_QUANTITY)
     @Min(value = 1, message = ClientMembershipMessage.INVALID_QUANTITY)
     private Integer quantity;
 
@@ -40,5 +33,8 @@ public class CreateClientMembershipRequest {
     @NotNull(message = ClientMembershipMessage.NOT_NULL_PRICE)
     @DecimalMin(value = "0.0", message = ClientMembershipMessage.INVALID_PRICE)
     private Float price;
+
+    @NotNull(message = ClientMembershipMessage.NOT_NULL_ENABLED)
+    private Boolean enabled;
 
 }
