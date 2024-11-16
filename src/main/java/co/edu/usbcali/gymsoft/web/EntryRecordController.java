@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+
 @RestController
 @RequestMapping("/api/entry-record")
+@CrossOrigin("*")
 public class EntryRecordController {
 
     private final EntryRecordService entryRecordService;
