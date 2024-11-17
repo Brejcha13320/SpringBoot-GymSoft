@@ -77,7 +77,24 @@ public class ClientMembershipServiceImpl implements ClientMembershipService {
     public ClientMembershipDTO updateClientMembership(Integer clientMembershipId, UpdateClientMembershipRequest updateClientMembershipRequest) throws Exception {
         ClientMembershipDTO clientMembershipDTO = getClientMembershipById(clientMembershipId);
         ClientMembership clientMembership = ClientMembershipMapper.dtoToDomain(clientMembershipDTO);
+
+        //Validar que exista el client
+        Integer clientId = clientMembershipDTO.getClientId();
+        Client client = clientRepository.findById(clientId)
+                .orElseThrow(
+                        () -> new Exception(String.format(ClientMembershipMessage.EXISTS_CLIENT, clientId))
+                );
+
+        //Validar que exista el membership
+        Integer membershipId = clientMembershipDTO.getMembershipId();
+        Membership membership = membershipRepository.findById(membershipId)
+                .orElseThrow(
+                        () -> new Exception(String.format(ClientMembershipMessage.EXISTS_MEMBERSHIP, membershipId))
+                );
+
         clientMembership = ClientMembershipMapper.updateClientMembershipRequestToDomain(clientMembership, updateClientMembershipRequest);
+        clientMembership.setClient(client);
+        clientMembership.setMembership(membership);
         clientMembership = clientMembershipRepository.save(clientMembership);
         return ClientMembershipMapper.domainToDto(clientMembership);
     }
