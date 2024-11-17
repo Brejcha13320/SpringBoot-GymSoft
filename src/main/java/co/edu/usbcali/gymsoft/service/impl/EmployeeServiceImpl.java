@@ -94,6 +94,7 @@ public class EmployeeServiceImpl implements  EmployeeService {
 
         // Guarda el empleado actualizado
         employee = employeeRepository.save(employee);
+
         return EmployeeMapper.domainToDto(employee);
     }
 

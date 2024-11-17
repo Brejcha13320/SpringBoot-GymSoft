@@ -50,8 +50,7 @@ public class ClientMembershipController {
     public ResponseEntity<ClientMembershipDTO> updateClientMembershipDTO(
             @PathVariable Integer clientMembershipId,
             @RequestBody @Valid UpdateClientMembershipRequest updateClientMembershipRequest) throws Exception {
-        ClientMembershipDTO clientMembershipDTO = clientMembershipService.updateClientMembership(clientMembershipId,
-                updateClientMembershipRequest);
+        ClientMembershipDTO clientMembershipDTO = clientMembershipService.updateClientMembership(clientMembershipId, updateClientMembershipRequest);
         return ResponseEntity.ok(clientMembershipDTO);
     }
 
