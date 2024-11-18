@@ -6,7 +6,11 @@ import co.edu.usbcali.gymsoft.dto.request.CreateMembershipRequest;
 import co.edu.usbcali.gymsoft.dto.request.UpdateMembershipRequest;
 import co.edu.usbcali.gymsoft.utils.Constants;
 
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.List;
+import java.time.LocalDateTime;
 
 public class MembershipMapper {
 
@@ -43,19 +47,24 @@ public class MembershipMapper {
     }
 
     public static Membership createMembershipRequestToDomain(CreateMembershipRequest createMembeshipRequest){
+        LocalDateTime now = LocalDateTime.now();
         return Membership.builder()
                 .type(createMembeshipRequest.getType())
                 .description(createMembeshipRequest.getDescription())
                 .cost(createMembeshipRequest.getCost())
                 .enabled(Constants.ENABLE_ACTIVE)
+                .createdAt(Date.from(now.atZone(ZoneId.systemDefault()).toInstant()))
+                .updatedAt(Date.from(now.atZone(ZoneId.systemDefault()).toInstant()))
                 .build();
     }
 
     public static Membership updateMembershipRequestToDomain(Membership membership, UpdateMembershipRequest updateMembershipRequest) {
+        LocalDateTime now = LocalDateTime.now();
         membership.setType(updateMembershipRequest.getType());
         membership.setDescription(updateMembershipRequest.getDescription());
         membership.setCost(updateMembershipRequest.getCost());
         membership.setEnabled(updateMembershipRequest.getEnabled());
+        membership.setUpdatedAt(Date.from(LocalDateTime.now().atZone(ZoneId.systemDefault()).toInstant()));
         return membership;
     }
 }
