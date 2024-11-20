@@ -62,6 +62,8 @@ public class EmployeeServiceImpl implements  EmployeeService {
             throw new Exception(String.format(EmployeeMessage.EXISTS_BY_EMAIL, employee.getEmail()));
         }
 
+        employee.setEnabled(true);
+
         // Guarda el empleado en la base de datos
         employee = employeeRepository.save(employee);
 
@@ -73,6 +75,7 @@ public class EmployeeServiceImpl implements  EmployeeService {
 
     @Override
     public EmployeeDTO updateEmployee(Integer employeeId, UpdateEmployeeRequest updateEmployeeRequest) throws Exception {
+
         // Encuentra el empleado por ID
         EmployeeDTO employeeDTO = findEmployeeById(employeeId);
         Employee employee = EmployeeMapper.dtoToDomain(employeeDTO);
@@ -91,6 +94,8 @@ public class EmployeeServiceImpl implements  EmployeeService {
         if (!employeeDTO.getEmail().equals(newEmail) && employeeRepository.existsByEmail(newEmail)) {
             throw new Exception(String.format(EmployeeMessage.EXISTS_BY_EMAIL, newEmail));
         }
+
+        employee.setEnabled(updateEmployeeRequest.getEnabled());
 
         // Guarda el empleado actualizado
         employee = employeeRepository.save(employee);

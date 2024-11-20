@@ -1,6 +1,7 @@
 package co.edu.usbcali.gymsoft.dto.request;
 
 import co.edu.usbcali.gymsoft.utils.validation.EmployeeMessage;
+import co.edu.usbcali.gymsoft.utils.validation.MembershipMessage;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -45,6 +46,9 @@ public class UpdateEmployeeRequest {
     @NotEmpty(message = EmployeeMessage.NOT_EMPTY_PHONE)
     @Size(max = 30, min = 5, message = EmployeeMessage.SIZE_PHONE)
     private String phone;
+
+    @NotNull(message = MembershipMessage.NOT_NULL_ENABLED)
+    private Boolean enabled;
 
     private Integer userId;
 
