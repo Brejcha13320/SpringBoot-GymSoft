@@ -1,5 +1,6 @@
 package co.edu.usbcali.gymsoft.dto.request;
 
+import co.edu.usbcali.gymsoft.utils.validation.MembershipMessage;
 import co.edu.usbcali.gymsoft.utils.validation.UserMessage;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
@@ -28,5 +29,8 @@ public class UpdateUserRequest {
     @NotNull(message = UserMessage.NOT_NULL_ROLE)
     @NotEmpty(message = UserMessage.NOT_EMPTY_ROLE)
     private String role;
+
+    @NotNull(message = MembershipMessage.NOT_NULL_ENABLED)
+    private Boolean enabled;
 
 }

@@ -50,6 +50,7 @@ public class UserServiceImpl implements UserService {
         }
 
         User user = UserMapper.createUserRequestToDomain(createUserRequest);
+        user.setEnabled(true);
         user = userRepository.save(user);
         UserDTO userDTO = UserMapper.domainToDto(user);
         return userDTO;
@@ -60,6 +61,8 @@ public class UserServiceImpl implements UserService {
         UserDTO userDTO = findUserById(userId);
         User user = UserMapper.dtoToDomain(userDTO);
         user = UserMapper.updateUserRequestToDomain(user, updateUserRequest);
+
+        user.setEnabled(updateUserRequest.getEnabled());
         user = userRepository.save(user);
         return UserMapper.domainToDto(user);
     }
